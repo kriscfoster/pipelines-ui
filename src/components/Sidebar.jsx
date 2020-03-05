@@ -9,6 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 import GroupIcon from "@material-ui/icons/Group";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -20,20 +21,27 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     width: drawerWidth
   },
+  a: {
+    textDecoration: "none",
+    color: theme.palette.text.primary,
+  },
 }));
 
 const menuItems = [
   {
     key: "Home",
-    icon: <HomeIcon />
+    icon: <HomeIcon />,
+    link: "/"
   },
   {
     key: "Pipelines",
-    icon: <ViewColumnIcon />
+    icon: <ViewColumnIcon />,
+    link: "/pipelines"
   },
   {
     key: "Teams",
-    icon: <GroupIcon />
+    icon: <GroupIcon />,
+    link: "/teams"
   }
 ];
 
@@ -51,11 +59,13 @@ export default function Sidebar() {
     >
       <Divider />
       <List>
-        {menuItems.map((menuItem) => (
-          <ListItem button key={menuItem.key}>
-            <ListItemIcon>{menuItem.icon}</ListItemIcon>
-            <ListItemText primary={menuItem.key}/>
-          </ListItem>
+        {menuItems.map((menuItem, id) => (
+          <Link key={id} to={menuItem.link} className={classes.a}>
+            <ListItem button>
+              <ListItemIcon>{menuItem.icon}</ListItemIcon>
+              <ListItemText primary={menuItem.key} />
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />

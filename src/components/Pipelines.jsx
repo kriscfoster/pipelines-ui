@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import { Link } from "react-router-dom";
 
 import NewPipeline from "./NewPipeline";
 
@@ -22,11 +23,7 @@ class Pipelines extends React.Component {
     super(props);
     this.state = {
       projects: [],
-      newProjectModalOpen: false,
     }
-
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
   }
 
   async componentDidMount() {
@@ -34,14 +31,6 @@ class Pipelines extends React.Component {
     const projects = await response.json()
     this.setState({ projects })
   }
-
-  handleOpen() {
-    this.setState({ newProjectModalOpen: true });
-  };
-
-  handleClose() {
-    this.setState({ newProjectModalOpen: false });
-  };
 
   render() {
     const { classes } = this.props;
@@ -54,9 +43,9 @@ class Pipelines extends React.Component {
           <Grid container item xs={12} spacing={3}>
             {projects.map(project => (
               <Grid key={project.id} item xs={4}>
-                <a href="#" className={classes.a}>
+                <Link to={`pipelines/${project.id}`} className={classes.a}>
                   <Paper className={classes.paper}>{project.name}</Paper>
-                </a>
+                </Link>
               </Grid>
             ))}
           </Grid>
