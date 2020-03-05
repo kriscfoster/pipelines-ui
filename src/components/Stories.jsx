@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-
 import FormModalFromButton from "./FormModalFromButton";
 import NewStoryForm from "./NewStoryForm";
 import StoryBoard from "./StoryBoard";

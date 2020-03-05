@@ -2,10 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Box from "@material-ui/core/Box";
-import { compose } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -23,7 +21,7 @@ async function stateChanged(story, event) {
   const updatedStory = story;
   updatedStory.state = newState;
   
-  const response = await fetch(`http://localhost:8080/stories/${id}`, {
+  await fetch(`http://localhost:8080/stories/${id}`, {
     method: "PATCH",
     body: JSON.stringify(updatedStory),
     headers: {

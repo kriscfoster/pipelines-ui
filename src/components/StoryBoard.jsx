@@ -1,10 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-
 import Story from "./Story";
-
-const styles = theme => ({});
 
 class StoryBoard extends React.Component {
 

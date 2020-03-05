@@ -45,12 +45,12 @@ export default function NewPipline(props) {
     <div>
       <Box mb={2} className={classes.buttonContainer}>
         <Button variant="contained" color="primary" onClick={handleOpen}>
-          { title }
+          {title}
         </Button>
       </Box>
       <Modal open={open} onClose={handleClose}>
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">{ title }</h2>
+          <h2 id="simple-modal-title">{title}</h2>
           <FormComponent/>
         </div>
       </Modal>
