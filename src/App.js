@@ -3,7 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import { Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom";
 
 import Sidebar from "./components/Sidebar";
 import Pipelines from "./components/Pipelines";
