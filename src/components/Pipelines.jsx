@@ -43,7 +43,7 @@ class Pipelines extends React.Component {
           <Grid container item xs={12} spacing={3}>
             {projects.map(project => (
               <Grid key={project.id} item xs={4}>
-                <Link to={`pipelines/${project.id}`} className={classes.a}>
+                <Link to={`/pipelines/${project.id}`} className={classes.a}>
                   <Paper className={classes.paper}>{project.name}</Paper>
                 </Link>
               </Grid>

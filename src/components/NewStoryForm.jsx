@@ -48,7 +48,7 @@ class NewStoryForm extends React.Component {
 
   async createStory(story) {
     const id = this.props.match.params.id;
-    const response = await fetch(`http://localhost:8080/projects/${id}`, {
+    const response = await fetch(`http://localhost:8080/projects/${id}/stories`, {
       method: "POST",
       body: JSON.stringify(story),
       headers: {
@@ -76,7 +76,7 @@ class NewStoryForm extends React.Component {
             <Select value={this.state.state} onChange={this.handleStateChange}>
               <MenuItem value={"NEW"}>New</MenuItem>
               <MenuItem value={"IN_PROGRESS"}>In Progress</MenuItem>
-              <MenuItem value={"FINISHED"}>Finished</MenuItem>
+              <MenuItem value={"CLOSED"}>Closed</MenuItem>
             </Select>
           </Box>
           <Box mt={2}>

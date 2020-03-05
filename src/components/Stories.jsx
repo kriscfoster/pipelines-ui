@@ -17,7 +17,6 @@ class Stories extends React.Component {
     const { id } = this.props.match.params;
     const response = await fetch(`http://localhost:8080/projects/${id}/stories`);
     const stories = await response.json();
-    console.log(stories)
     this.setState({ stories });
   }
 
@@ -27,7 +26,7 @@ class Stories extends React.Component {
     return (
       <div>
         <FormModalFromButton formComponent={NewStoryForm} title={"Create new story"} />
-        <StoryBoard stories/>
+        <StoryBoard stories={stories}/>
       </div>
     );
   }
