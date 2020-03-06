@@ -10,7 +10,7 @@ import {
 
 import Sidebar from "./components/Sidebar";
 import Pipelines from "./components/Pipelines";
-import Stories from "./components/Stories";
+import Pipeline from "./components/Pipeline";
 
 const drawerWidth = 240;
 
@@ -47,7 +47,7 @@ function App() {
             <Route exact path="/pipelines">
               <Pipelines />
             </Route>
-            <Route path="/pipelines/:id" children={<Stories/>}></Route>
+            <Route path="/pipelines/:id" children={<Pipeline/>}></Route>
           </main>
         </Router>
       </div>

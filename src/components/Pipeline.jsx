@@ -4,19 +4,20 @@ import FormModalFromButton from "./FormModalFromButton";
 import NewStoryForm from "./NewStoryForm";
 import StoryBoard from "./StoryBoard";
 
-class Stories extends React.Component {
+class Pipeline extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       stories: [],
+      states: [],
     };
   }
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const response = await fetch(`http://localhost:8080/projects/${id}/stories`);
-    const stories = await response.json();
-    this.setState({ stories });
+    const response = await fetch(`http://localhost:8080/projects/${id}`);
+    const project = await response.json();
+    this.setState({ stories: project.stories, states: project.states });
   }
 
   render() {
@@ -31,4 +32,4 @@ class Stories extends React.Component {
   }
 }
 
-export default withRouter(Stories);
+export default withRouter(Pipeline);
