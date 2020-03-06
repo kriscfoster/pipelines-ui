@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+import NewStoryForm from "./NewStoryForm";
 
 function getModalStyle() {
   return {
@@ -21,12 +22,9 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3)
   },
-  buttonContainer: {
-    textAlign: "left"
-  }
 }));
 
-export default function NewPipline(props) {
+export default function NewStoryModal(props) {
   const FormComponent = props.formComponent;
   const { title } = props;
   const classes = useStyles();
@@ -42,18 +40,16 @@ export default function NewPipline(props) {
   };
 
   return (
-    <div>
-      <Box mb={2} className={classes.buttonContainer}>
+      <Box mr={2}>
         <Button variant="contained" color="primary" onClick={handleOpen}>
-          {title}
+          Create new story
         </Button>
-      </Box>
       <Modal open={open} onClose={handleClose}>
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">{title}</h2>
-          <FormComponent/>
+          <h2 id="simple-modal-title">Create new story</h2>
+          <NewStoryForm/>
         </div>
       </Modal>
-    </div>
+    </Box>
   );
 }

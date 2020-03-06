@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
-import NewPipeline from "./NewPipeline";
+import NewPipelineModal from "./NewPipelineModal";
 
 const styles = theme => ({
   a: {
@@ -37,7 +37,7 @@ class Pipelines extends React.Component {
     
     return (
       <div className={classes.root}>
-        <NewPipeline />
+        <NewPipelineModal />
         <Grid container spacing={1}>
           <Grid container item xs={12} spacing={3}>
             {projects.map(project => (

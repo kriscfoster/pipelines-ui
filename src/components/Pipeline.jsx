@@ -1,7 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import FormModalFromButton from "./FormModalFromButton";
-import NewStoryForm from "./NewStoryForm";
 import StoryBoard from "./StoryBoard";
 
 class Pipeline extends React.Component {
@@ -9,7 +7,7 @@ class Pipeline extends React.Component {
     super(props);
     this.state = {
       stories: [],
-      states: [],
+      stages: [],
     };
   }
 
@@ -17,16 +15,16 @@ class Pipeline extends React.Component {
     const { id } = this.props.match.params;
     const response = await fetch(`http://localhost:8080/projects/${id}`);
     const project = await response.json();
-    this.setState({ stories: project.stories, states: project.states });
+    const { stories, stages } = project;
+    this.setState({ stories, stages });
   }
 
   render() {
-    const { stories } = this.state;
+    const { stories, stages } = this.state;
 
     return (
       <div>
-        <FormModalFromButton formComponent={NewStoryForm} title={"Create new story"} />
-        <StoryBoard stories={stories}/>
+        <StoryBoard stories={stories} stages={stages}/>
       </div>
     );
   }
