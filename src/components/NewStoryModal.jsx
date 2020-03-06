@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function NewStoryModal(props) {
-  const FormComponent = props.formComponent;
+  const { stages } = props;
   const { title } = props;
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
@@ -47,7 +47,7 @@ export default function NewStoryModal(props) {
       <Modal open={open} onClose={handleClose}>
         <div style={modalStyle} className={classes.paper}>
           <h2 id="simple-modal-title">Create new story</h2>
-          <NewStoryForm/>
+          <NewStoryForm stages={stages}/>
         </div>
       </Modal>
     </Box>

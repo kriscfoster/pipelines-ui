@@ -16,10 +16,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 async function stateChanged(story, event) {
-  const newState = event.target.value;
+  const newStage = event.target.value;
   const id = story.id;
   const updatedStory = story;
-  updatedStory.state = newState;
+  updatedStory.stage = newStage;
   
   await fetch(`http://localhost:8080/stories/${id}`, {
     method: "PATCH",
@@ -33,17 +33,15 @@ async function stateChanged(story, event) {
 }
 
 export default function Story(props) {
-  const { story } = props;
+  const { story, stages } = props;
   const classes = useStyles();
 
   return (
     <Paper className={classes.paper}>
       <Box>{story.name}</Box>
       <Box mt={2}>
-        <Select value={story.state} onChange={(e) => stateChanged(story, e)}>
-          <MenuItem value={"NEW"}>New</MenuItem>
-          <MenuItem value={"IN_PROGRESS"}>In Progress</MenuItem>
-          <MenuItem value={"CLOSED"}>Closed</MenuItem>
+        <Select value={story.stage} onChange={(e) => stateChanged(story, e)}>
+          {stages.map((s, i) => <MenuItem key={i} value={s.name}>{s.name}</MenuItem>)}
         </Select>
       </Box>
     </Paper>

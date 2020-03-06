@@ -10,14 +10,15 @@ import { withRouter } from "react-router-dom";
 class NewStoryForm extends React.Component {
   constructor(props) {
     super(props);
+    const stages = props.stages;
     this.state = {
       name: "",
-      state: "NEW",
+      stage: stages[0].name,
       error: ""
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleStateChange = this.handleStateChange.bind(this);
+    this.handleStageChange = this.handleStageChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,15 +26,15 @@ class NewStoryForm extends React.Component {
     this.setState({ name: event.target.value });
   }
 
-  handleStateChange(event) {
-    this.setState({ state: event.target.value });
+  handleStageChange(event) {
+    this.setState({ stage: event.target.value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const newStory = {
       name: this.state.name,
-      state: this.state.state,
+      stage: this.state.stage,
     };
 
     this.createStory(newStory)
@@ -61,6 +62,8 @@ class NewStoryForm extends React.Component {
   }
 
   render() {
+    const { stages } = this.props;
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -71,11 +74,9 @@ class NewStoryForm extends React.Component {
             label="Name"
           />
           <Box mt={2}>
-            <InputLabel>State</InputLabel>
-            <Select value={this.state.state} onChange={this.handleStateChange}>
-              <MenuItem value={"NEW"}>New</MenuItem>
-              <MenuItem value={"IN_PROGRESS"}>In Progress</MenuItem>
-              <MenuItem value={"CLOSED"}>Closed</MenuItem>
+            <InputLabel>Stage</InputLabel>
+            <Select value={this.state.stage} onChange={this.handleStageChange}>
+              {stages.map((s, i) => <MenuItem key={i} value={s.name}>{s.name}</MenuItem>)}
             </Select>
           </Box>
           <Box mt={2}>
