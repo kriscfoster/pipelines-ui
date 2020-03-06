@@ -45,7 +45,7 @@ export default function NewPiplineModal() {
     <div>
       <Box mb={2} className={classes.buttonContainer}>
         <Button variant="contained" color="primary" onClick={handleOpen}>
-          Create new pipeline
+          Add a pipeline
         </Button>
       </Box>
       <Modal
@@ -53,7 +53,7 @@ export default function NewPiplineModal() {
         onClose={handleClose}
       >
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Create new pipeline</h2>
+          <h2 id="simple-modal-title">Add a pipeline</h2>
           <NewPipelineForm />
         </div>
       </Modal>

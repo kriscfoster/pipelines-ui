@@ -42,11 +42,11 @@ export default function NewStageModal(props) {
   return (
     <Box mr={2}>
       <Button variant="contained" color="primary" onClick={handleOpen}>
-        Create new stage
+        Add a stage
         </Button>
       <Modal open={open} onClose={handleClose}>
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Create new stage</h2>
+          <h2 id="simple-modal-title">Add a stage</h2>
           <NewStageForm />
         </div>
       </Modal>

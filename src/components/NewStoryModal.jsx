@@ -42,11 +42,11 @@ export default function NewStoryModal(props) {
   return (
       <Box mr={2}>
         <Button variant="contained" color="primary" onClick={handleOpen}>
-          Create new story
+          Add a story
         </Button>
       <Modal open={open} onClose={handleClose}>
         <div style={modalStyle} className={classes.paper}>
-          <h2 id="simple-modal-title">Create new story</h2>
+          <h2 id="simple-modal-title">Add a story</h2>
           <NewStoryForm stages={stages}/>
         </div>
       </Modal>

@@ -16,8 +16,10 @@ const styles = theme => ({
   },
   paper: {
     marginTop: theme.spacing(4),
-    padding: theme.spacing(4),
-    backgroundColor: theme.palette.background.paper
+    padding: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
+    minHeight: "200px"
   },
   stageTitle: {
     textAlign: "center",
@@ -44,13 +46,13 @@ class StoryBoard extends React.Component {
           <NewStageModal />
         </Box>
         <Divider />
-        <Grid container spacing={3}>
+        <Grid container>
           <Grid container justify="center" spacing={3}>
             {storiesByStage.map((stageWithStories, i) => {
               return (
                 <Grid key={i} item xs={3}>
                   <Paper className={classes.paper}>
-                    <Typography variant="h6" gutterBottom className={classes.stageTitle}>
+                    <Typography gutterBottom className={classes.stageTitle}>
                       {stages[i].name}
                     </Typography>
                     {stageWithStories.map((story, id) => (
