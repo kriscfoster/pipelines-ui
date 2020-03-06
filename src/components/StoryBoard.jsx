@@ -27,9 +27,11 @@ class StoryBoard extends React.Component {
     const { classes, stories, stages } = this.props;
     const storiesByStage = [];
 
+    console.log(stories)
+
     stages.map((stage, i) => {
       const stageName = stage.name
-      storiesByStage[i] = stories.filter((s) => s.stage === stageName);
+      storiesByStage[i] = stories.filter((s) => s.stage.name === stageName);
     })
 
     return (

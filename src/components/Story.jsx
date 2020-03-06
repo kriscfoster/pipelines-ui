@@ -15,8 +15,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-async function stateChanged(story, event) {
-  const newStage = event.target.value;
+async function stateChanged(story, event, stages) {
+  const newStageId = event.target.value;
+  const newStage = stages.filter((s) => s.id === newStageId)[0];
   const id = story.id;
   const updatedStory = story;
   updatedStory.stage = newStage;
@@ -40,8 +41,8 @@ export default function Story(props) {
     <Paper className={classes.paper}>
       <Box>{story.name}</Box>
       <Box mt={2}>
-        <Select value={story.stage} onChange={(e) => stateChanged(story, e)}>
-          {stages.map((s, i) => <MenuItem key={i} value={s.name}>{s.name}</MenuItem>)}
+        <Select value={story.stage.id} onChange={(e) => stateChanged(story, e, stages)}>
+          {stages.map((s, i) => <MenuItem key={i} value={s.id}>{s.name}</MenuItem>)}
         </Select>
       </Box>
     </Paper>

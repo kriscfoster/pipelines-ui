@@ -13,7 +13,7 @@ class NewStoryForm extends React.Component {
     const stages = props.stages;
     this.state = {
       name: "",
-      stage: stages[0].name,
+      stage: stages[0],
       error: ""
     };
 
@@ -76,7 +76,7 @@ class NewStoryForm extends React.Component {
           <Box mt={2}>
             <InputLabel>Stage</InputLabel>
             <Select value={this.state.stage} onChange={this.handleStageChange}>
-              {stages.map((s, i) => <MenuItem key={i} value={s.name}>{s.name}</MenuItem>)}
+              {stages.map((s, i) => <MenuItem key={i} value={s}>{s.name}</MenuItem>)}
             </Select>
           </Box>
           <Box mt={2}>
